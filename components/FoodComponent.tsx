@@ -27,8 +27,7 @@ const  FoodComponent = ({food}) => {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: 'center',
+      
       justifyContent: 'center',
     },
     title: {
