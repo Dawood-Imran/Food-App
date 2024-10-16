@@ -1,51 +1,43 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { StyleSheet } from 'react-native'
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const CustomNavbar = () => {
   return (
-    <View style = {styles.container}>
-    
-    <View style={styles.meals}>
-    <Text>Meals</Text>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.navItem}>
+        <Text style={styles.navText}>Meals</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.navItem}>
+        <Text style={styles.navText}>Sides</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.navItem}>
+        <Text style={styles.navText}>Deals</Text>
+      </TouchableOpacity>
     </View>
-
-    <View style = {styles.sides}>
-    <Text>Sides</Text>
-    </View>
-
-    <View style = {styles.deals}>
-    <Text>Deals</Text>
-    </View>
-      
-      
-    </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex:0.4,
-    backgroundColor:'white',
-    
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: '#f8f8f8',
+    height: 60,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
   },
-
-  meals:{
-    backgroundColor:'red',
-    color:'white',
-    
+  navItem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
   },
-  sides:{
-    backgroundColor:'blue',
-    color:'white',
+  navText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
   },
-  deals:{
-    backgroundColor:'green',
-    color:'white',
-  }
-})
+});
 
-
-export default CustomNavbar
+export default CustomNavbar;
