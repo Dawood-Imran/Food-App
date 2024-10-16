@@ -1,55 +1,41 @@
-import { View, Text, Image } from "react-native"
-import { StyleSheet } from "react-native"
-import Food from "@/assets/data/Food"
+import React from 'react';
+import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
+import { FoodComponentProps, FoodItem, FoodIndex } from "@/types/types";
 
-const  FoodComponent = ({food}) => {
+const FoodComponent: React.FC<FoodComponentProps> = ({ food }) => {
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+        {food.map((data: FoodItem, index: FoodIndex) => (
+          <View key={index} style={styles.foodItem}>
+            <Image source={{ uri: data.image }} style={styles.image} />
+            <Text style={styles.title}>{data.name}</Text>
+            <Text style={styles.title}>{data.price}</Text>
+          </View>
+        ))}
+        </ScrollView> 
+      </View>
+    );
+  };
 
-    return(
-    <View style={styles.container}>
-  <Image source = {{uri:food[0].image}} 
-        style = {styles.image}
-        />
-        
-        <Text style={styles.title}>{food[0].name}</Text>
-        <Text style={styles.title}>{food[0].price}</Text>
-  
-        <Image source = {{uri:food[1].image}} 
-        style = {styles.image}
-        />
-        
-        <Text style={styles.title}>{food[1].name}</Text>
-        <Text style={styles.title}>{food[1].price}</Text>
-  
-
-    </View>)
+const styles = StyleSheet.create({
+  container: {
+    flex: 9.0,
+    justifyContent: 'center',
+  },
+  foodItem: {
+    // Add styles for food item container
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    margin: 10
+  },
+  image: {
+    width: 300,
+    aspectRatio: 2/1
   }
+});
 
-
-  const styles = StyleSheet.create({
-    container: {
-      
-      justifyContent: 'center',
-    },
-    title: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: 'white',
-      margin: 10
-    },
-    separator: {
-      marginVertical: 30,
-      height: 1,
-      width: '80%',
-    },
-    image:{
-      width: 300,
-      aspectRatio: 2/1
-    }
-  });
-  
-  export default FoodComponent
-
-
-
-
-
+export default FoodComponent;
